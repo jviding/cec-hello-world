@@ -5,14 +5,19 @@ application = Flask(__name__)
 
 @application.route("/")
 def hello():
-    
-	f = open("/mnt/access.log", "a+")
-	f.write("Hello World! Greetings from "+socket.gethostname()+" @ "+datetime.datetime.now()+"\n")
-	f.close()
-    
-	with open("/mnt/access.log", "r") as myfile:
-		data = myfile.read()
-    
+    try:
+		f = open("/mnt/access.log", "a+")
+		f.write("Hello World! Greetings from "+socket.gethostname()+" @ "+datetime.datetime.now()+"\n")
+		f.close()
+    except:
+    	return "Write failed"
+
+    try:
+		with open("/mnt/access.log", "r") as myfile:
+			data = myfile.read()
+    except:
+    	return "Read failed"
+
 	return data
 
 

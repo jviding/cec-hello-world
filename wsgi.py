@@ -7,7 +7,7 @@ application = Flask(__name__)
 def hello():
 	try:
 		f = open("/mnt/access.log", "a+")
-		f.write("Hello World! Greetings from "+socket.gethostname()+" @ "+str(datetime.datetime.now())+"\n")
+		f.write("<p>Hello World! Greetings from "+socket.gethostname()+" @ "+str(datetime.datetime.now())+"\n</p>")
 		f.close()
 	except Exception as e:
 		return str(e)
@@ -18,7 +18,7 @@ def hello():
 	except Exception as e:
 		return str(e)
 
-	return data
+	return "<html><head></head><body>"+data+"</body></html>"
 
 
 if __name__ == "__main__":

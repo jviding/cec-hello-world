@@ -6,14 +6,14 @@ application = Flask(__name__)
 @application.route("/")
 def hello():
     
-    f = open("/mnt/access.log", "a+")
+	f = open("/mnt/access.log", "a+")
 	f.write("Hello World! Greetings from "+socket.gethostname()+" @ "+datetime.datetime.now()+"\n")
-    f.close()
+	f.close()
     
-    with open("/mnt/access.log", "r") as myfile:
-        data = myfile.read()
+	with open("/mnt/access.log", "r") as myfile:
+		data = myfile.read()
     
-    return data
+	return data
 
 
 if __name__ == "__main__":
